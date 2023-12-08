@@ -1,6 +1,8 @@
-from main import create_app
+from main import create_app, db
 
 app = create_app()
+
+app.app_context().push()
 
 @app.route('/healthcheck')
 def healthcheck():

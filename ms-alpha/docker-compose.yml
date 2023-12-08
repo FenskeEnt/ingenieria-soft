@@ -7,6 +7,12 @@ services:
     ports:
       - "5000:5000"
     container_name: ms-alpha
+    environment:
+      - DB_HOST=databasexample
+      - DB_PORT=3306
+      - DB_DATABASE=DatabaseExample
+      - DB_USER=root
+      - DB_PASSWORD=prueba123
 
     networks:
       - red
