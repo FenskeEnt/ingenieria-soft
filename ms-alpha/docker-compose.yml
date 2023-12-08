@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+
+  ms-alpha:
+    build: .
+    ports:
+      - "5000:5000"
+    container_name: ms-alpha
+
+    networks:
+      - red
+
+networks:
+  red: 
+    external: true
+      
