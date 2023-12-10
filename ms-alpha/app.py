@@ -1,4 +1,4 @@
-from main import create_app, db
+from main import create_app, db, circuit_breaker
 import time
 
 app = create_app()
@@ -33,6 +33,34 @@ def compras():
         }
     ]
     return compras, 200
+
+@app.route('/simulate-failure')
+@circuit_breaker
+def simulate_failure():
+    # Simulando una falla
+    # Por ejemplo, intentar acceder a una variable que no existe
+    result = variable_que_no_existe  # Esto causará un NameError
+    return 'Esta línea nunca se va a ejecutar si tengo el error o si tengo una falla antes', 200
+
+
+@app.route('/no-failure')
+@circuit_breaker
+def no_failure():
+    items = [
+        {
+            'id': 1,
+            'nombre': 'Arroz',
+            'cantidad': 1,
+            'precio': 2.50
+        },
+        {
+            'id': 2,
+            'nombre': 'Leche',
+            'cantidad': 2,
+            'precio': 1.50
+        }
+    ]
+    return items, 200
 
 if __name__ == '__main__':
 

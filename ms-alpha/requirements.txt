@@ -10,3 +10,6 @@ Flask-SQLAlchemy==2.5.1
 
 # CORS
 flask-cors==3.0.10
+
+# Circuit breaker
+pybreaker==0.7

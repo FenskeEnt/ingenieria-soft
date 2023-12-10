@@ -2,10 +2,13 @@ from flask import Flask
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 import os
+from pybreaker import CircuitBreaker
 
 from flask_cors import CORS
 
 db = SQLAlchemy()
+
+circuit_breaker = CircuitBreaker(fail_max=3, reset_timeout=1000)
 
 def create_app():
 
@@ -27,5 +30,10 @@ def create_app():
     cors = CORS(app, supports_credentials=True)
     app.config['CORS_HEADERS'] = 'Content-Type'
     cors = CORS(app, resources={r"*": {"origins": "*"}})
+
+    # circuit_breaker = CircuitBreaker(app)
+
+    # circuite breaker
+    app.config['CIRCUITE_BREAKER'] = circuit_breaker
 
     return app

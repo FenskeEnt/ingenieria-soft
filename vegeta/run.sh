@@ -1,0 +1,1 @@
+echo "GET http://localhost:5000/no-failure" | vegeta attack -duration=10s | tee results.bin | vegeta report
