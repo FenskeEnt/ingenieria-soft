@@ -3,9 +3,11 @@ from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-from flask_cors import CORS
+from flask_caching import Cache
 
 db = SQLAlchemy()
+
+cache = Cache()
 
 def create_app():
 
@@ -24,8 +26,10 @@ def create_app():
 
     db.init_app(app)
 
-    cors = CORS(app, supports_credentials=True)
-    app.config['CORS_HEADERS'] = 'Content-Type'
-    cors = CORS(app, resources={r"*": {"origins": "*"}})
+    # redis config
+    app.config['CACHE_TYPE'] = os.getenv("CACHE_TYPE")
+    app.config["CACHE_REDIS_URL"] = os.getenv("CACHE_REDIS_URL")
+
+    cache.init_app(app)
 
     return app

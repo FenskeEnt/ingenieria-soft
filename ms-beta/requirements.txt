@@ -8,5 +8,9 @@ mysql-connector-python==8.0.29
 sqlalchemy==1.4.47
 Flask-SQLAlchemy==2.5.1
 
-# CORS
-flask-cors==3.0.10
+# Conectar otro ms
+requests==2.26.0
+
+# Cache
+redis==3.5.3
+flask-caching==2.0.2

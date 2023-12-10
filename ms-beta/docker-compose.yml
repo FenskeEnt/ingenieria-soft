@@ -1,0 +1,27 @@
+version: "3.3"
+
+services:
+
+  ms-beta:
+    build: .
+    ports:
+      - "7000:7000"
+    container_name: ms-beta
+    environment:
+      - DB_HOST=databasexample
+      - DB_PORT=3306
+      - DB_DATABASE=DatabaseExample
+      - DB_USER=root
+      - DB_PASSWORD=prueba123
+      - URL_MS_ALPHA=http://ms-alpha:5000
+
+      - CACHE_TYPE=redis
+      - CACHE_REDIS_URL=redis://redis:6379/0 # url de redis
+
+    networks:
+      - red
+
+networks:
+  red: 
+    external: true
+      
