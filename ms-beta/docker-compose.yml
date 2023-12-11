@@ -13,10 +13,19 @@ services:
       - DB_DATABASE=DatabaseExample
       - DB_USER=root
       - DB_PASSWORD=prueba123
-      - URL_MS_ALPHA=http://ms-alpha:5000
+      - URL_MS_ALPHA=http://alpha.ingesoftcurso.localhost/ # url de ms-alpha
 
       - CACHE_TYPE=redis
       - CACHE_REDIS_URL=redis://redis:6379/0 # url de redis
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.beta.rule=Host(`beta.ingesoftcurso.localhost`)"
+      - "traefik.http.routers.beta.tls=true"
+      - "traefik.http.services.beta.loadbalancer.server.port=7000"
+      - "traefik.docker.network=red"
+      - "traefik.http.middlewares.latency-check.circuitbreaker.expression=LatencyAtQuantileMS(50.0) > 100"
+      - "traefik.http.services.beta.loadbalancer.server.scheme=http"
 
     networks:
       - red

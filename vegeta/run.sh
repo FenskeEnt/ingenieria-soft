@@ -1,1 +1,2 @@
-echo "GET http://localhost:5000/no-failure" | vegeta attack -duration=10s | tee results.bin | vegeta report
+# echo "GET http://localhost:5000/no-failure" | vegeta attack -duration=10s | tee results.bin | vegeta report
+# echo "GET http://beta.ingesoftcurso.localhost/show-compras" | vegeta attack -duration=10s | tee results.bin | vegeta report

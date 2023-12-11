@@ -1,0 +1,1 @@
+mkcert -cert-file certs/local-cert.pem -key-file certs/local-key.pem "ingesoftcurso.localhost" "*.ingesoftcurso.localhost" "ingesoftcurso.local" "*.ingesoftcurso.local"

@@ -1,0 +1,18 @@
+http:
+  routers:
+    traefik:
+      rule: "Host(`traefik.ingesoftcurso.localhost`)"
+      service: "api@internal" 
+      tls:
+        domains:
+          - main: "ingesoftcurso.localhost"
+            sans:
+              - "*.ingesoftcurso.localhost"
+          - main: "ingesoftcurso.local"
+            sans:
+              - "*.ingesoftcurso.local"
+
+tls:
+  certificates:
+    - certFile: "/etc/traefik/certs/local-cert.pem"
+      keyFile: "/etc/traefik/certs/local-key.pem"
