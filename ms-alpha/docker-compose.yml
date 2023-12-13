@@ -4,24 +4,25 @@ services:
 
   ms-alpha:
     build: .
-    ports:
-      - "5000:5000"
-    container_name: ms-alpha
-    environment:
-      - DB_HOST=databasexample
-      - DB_PORT=3306
-      - DB_DATABASE=DatabaseExample
-      - DB_USER=root
-      - DB_PASSWORD=prueba123
+    # ports:
+    #   - "5000:5000"
+    # container_name: ms-alpha
+    # environment:
+      # - DB_HOST=databasexample
+      # - DB_PORT=3306
+      # - DB_DATABASE=DatabaseExample
+      # - DB_USER=root
+      # - DB_PASSWORD=prueba123
 
-    labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.alpha.rule=Host(`alpha.ingesoftcurso.localhost`)"
-        - "traefik.http.routers.alpha.tls=true"
-        - "traefik.http.services.alpha.loadbalancer.server.port=5000"
-        - "traefik.docker.network=red"
-        - "traefik.http.middlewares.latency-check.circuitbreaker.expression=LatencyAtQuantileMS(50.0) > 100"
-        - "traefik.http.services.alpha.loadbalancer.server.scheme=http"
+    # labels:
+    #     - "traefik.enable=true"
+    #     - "traefik.http.routers.alpha.rule=Host(`alpha.ingesoftcurso.localhost`)"
+    #     - "traefik.http.routers.alpha.tls=true"
+    #     - "traefik.http.services.alpha.loadbalancer.server.port=5000"
+    #     - "traefik.docker.network=red"
+    #     - "traefik.http.middlewares.latency-check.circuitbreaker.expression=LatencyAtQuantileMS(50.0) > 100"
+    #     - "traefik.http.services.alpha.loadbalancer.server.scheme=http"
+
     networks:
       - red
 

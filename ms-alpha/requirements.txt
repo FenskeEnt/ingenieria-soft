@@ -13,3 +13,6 @@ flask-cors==3.0.10
 
 # Circuit breaker
 pybreaker==0.7
+
+# Consul
+py-consulate-ms==1.0.0
